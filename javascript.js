@@ -9,7 +9,7 @@ function getComputerChoice(){
 function playRound(playerSelection, computerSelection){
     //if player chooses rock
     if (playerSelection === 0){
-        //check what computer picked and return appropriate string
+        //check what computer picked and compare against rock
         switch(computerSelection){
             case 0: return "It's a tie!"
             break;
@@ -20,11 +20,25 @@ function playRound(playerSelection, computerSelection){
     }
     //if player chooses paper
     else if (playerSelection === 1){
-
+        //check what computer picked and compare against paper
+        switch(computerSelection){
+            case 0: return "You Win! Paper beats Rock"
+            break;
+            case 1: return "It's a tie!"
+            break;
+            default: return "You Lose! Scissors beats Paper"
+        }
     }
     //if player chooses scissors
     else {
-
+        //check what computer picked and compare against scissors
+        switch(computerSelection){
+            case 0: return "You Lose! Rock beats Scissors"
+            break;
+            case 1: return "You Win! Scissors beats Paper"
+            break;
+            default: return "It's a tie!"
+        }
     }
 }
 
