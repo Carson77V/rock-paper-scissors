@@ -45,6 +45,8 @@ function playRound(playerSelection, computerSelection){
 function game(){
     // define the players selection
     playerSelection = null;
+    playerPoints = 0;
+    computerPoints = 0;
     // for loop to play the game 5 times
     for (let i = 0; i < 5; i++){
         // a while loop to make sure the player selects rock paper or scissors
@@ -63,8 +65,26 @@ function game(){
         else {
             playerSelection = 2;
         }
-        console.log(playRound(playerSelection, getComputerChoice()));
+        // the result will be checked for the winner to add points
+        let result = playRound(playerSelection, getComputerChoice());
+        console.log(result);
+        //check results and gives points to computer or player
+        if (result.charAt(4) == "W"){
+            playerPoints++;
+        }
+        else if (result.charAt(4) == "L"){
+            computerPoints++;
+        }
+    }
+    if (playerPoints > computerPoints){
+        console.log("You Win!");
+    }
+    else if (playerPoints < computerPoints){
+        console.log("The computer Wins");
+    }
+    else {
+        console.log("It's a tie");
     }
 }
 
-playRound(0, getComputerChoice());
+game();
