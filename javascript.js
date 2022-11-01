@@ -42,4 +42,12 @@ function playRound(playerSelection, computerSelection){
     }
 }
 
+function game(){
+    playerSelection = null;
+
+    while (playerSelection != "rock" && playerSelection != "paper" && playerSelection 
+           != "scissors"){
+            playerSelection = prompt("rock, paper or scissors?").toLowerCase();
+        }
+}
 playRound(0, getComputerChoice());
