@@ -69,6 +69,7 @@ function game(){
         let result = playRound(playerSelection, getComputerChoice());
         console.log(result);
         //check results and gives points to computer or player
+        //charAt(4) is the character where it begins to say "Win" or "Lose"
         if (result.charAt(4) == "W"){
             playerPoints++;
         }
@@ -76,14 +77,18 @@ function game(){
             computerPoints++;
         }
     }
+    // check the points and print the winner to the console
     if (playerPoints > computerPoints){
         console.log("You Win!");
+        alert("You Win!");
     }
     else if (playerPoints < computerPoints){
         console.log("The computer Wins");
+        alert("The computer Wins");
     }
     else {
         console.log("It's a tie");
+        alert("It's a tie");
     }
 }
 
