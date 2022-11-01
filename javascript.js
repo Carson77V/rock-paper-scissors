@@ -41,13 +41,26 @@ function playRound(playerSelection, computerSelection){
         }
     }
 }
-
+// this function plays a game with 5 rounds
 function game(){
+    // define the players selection
     playerSelection = null;
-
+    // a while loop to make sure the player selects rock paper or scissors
     while (playerSelection != "rock" && playerSelection != "paper" && playerSelection 
            != "scissors"){
+            // makes the player selection lower case to compare in while loop
             playerSelection = prompt("rock, paper or scissors?").toLowerCase();
         }
+    // convert playerSelection to a number to use in playRound function
+    if (playerSelection === "rock"){
+        playerSelection = 0;
+    }
+    else if (playerSelection === "paper"){
+        playerSelection = 1;
+    }
+    else {
+        playerSelection = 2;
+    }
 }
+
 playRound(0, getComputerChoice());
