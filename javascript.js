@@ -45,21 +45,25 @@ function playRound(playerSelection, computerSelection){
 function game(){
     // define the players selection
     playerSelection = null;
-    // a while loop to make sure the player selects rock paper or scissors
-    while (playerSelection != "rock" && playerSelection != "paper" && playerSelection 
-           != "scissors"){
-            // makes the player selection lower case to compare in while loop
-            playerSelection = prompt("rock, paper or scissors?").toLowerCase();
+    // for loop to play the game 5 times
+    for (let i = 0; i < 5; i++){
+        // a while loop to make sure the player selects rock paper or scissors
+        while (playerSelection != "rock" && playerSelection != "paper" && playerSelection 
+            != "scissors"){
+                // makes the player selection lower case to compare in while loop
+                playerSelection = prompt("rock, paper or scissors?").toLowerCase();
+            }
+        // convert playerSelection to a number to use in playRound function
+        if (playerSelection === "rock"){
+            playerSelection = 0;
         }
-    // convert playerSelection to a number to use in playRound function
-    if (playerSelection === "rock"){
-        playerSelection = 0;
-    }
-    else if (playerSelection === "paper"){
-        playerSelection = 1;
-    }
-    else {
-        playerSelection = 2;
+        else if (playerSelection === "paper"){
+            playerSelection = 1;
+        }
+        else {
+            playerSelection = 2;
+        }
+        console.log(playRound(playerSelection, getComputerChoice()));
     }
 }
 
