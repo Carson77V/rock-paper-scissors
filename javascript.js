@@ -51,8 +51,15 @@ buttons.forEach((button) => {
   // and for each one we add a 'click' listener
   button.addEventListener('click', () => {
     let computerSelection = getComputerChoice();
-    console.log(playRound(button.className, computerSelection));
-    displayResult(playRound(button.className, computerSelection));
+    let result = playRound(button.className, computerSelection);
+    displayResult(result);
+    countScore(result);
+    if (winner){
+
+    }
+
+
+    console.log(result);
   });
 });
 
@@ -64,7 +71,34 @@ function displayResult(resultString){
     result.textContent = resultString;
 }
 
+let playerPoints = 0, computerPoints = 0;
+// function modifies score for computer and player
+function countScore(result){
+    //check results and gives points to computer or player
+    //charAt(4) is the character where it begins to say "Win" or "Lose"
+    if (result.charAt(4) == "W"){
+        playerPoints++;
+        // changes the player score in the DOM
+        const player = document.querySelector(".playerScore > div");
+        player.textContent = playerPoints;
+    }
+     else if (result.charAt(4) == "L"){
+        computerPoints++;
+        // changes the computer score in the DOM
+        const computer = document.querySelector(".computerScore > div")
+        computer.textContent = computerPoints;
+        
+    }
+}
 
+function winner(){
+    if (playerPoints === 5){
+        return "You Win!";
+    }
+    if (computerPoints === 5){
+        return "The Computer Wins!";
+    }
+}
 
 
 
