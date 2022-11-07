@@ -52,10 +52,17 @@ buttons.forEach((button) => {
   button.addEventListener('click', () => {
     let computerSelection = getComputerChoice();
     console.log(playRound(button.className, computerSelection));
+    displayResult(playRound(button.className, computerSelection));
   });
 });
 
-
+// this function will modify the div to display the results
+function displayResult(resultString){
+    // selects the node from the DOM
+    const result = document.querySelector('.results');
+    // changes the textContent of the selected node
+    result.textContent = resultString;
+}
 
 
 
