@@ -6,9 +6,10 @@ function getComputerChoice(){
     return Math.floor(Math.random() * 3);
 }
 // this function returns a string telling who wins
-function playRound(playerSelection, computerSelection){
+function playRound(playerSelection){
+    let computerSelection = getComputerChoice;
     //if player chooses rock
-    if (playerSelection === 0){
+    if (playerSelection === "rock"){
         //check what computer picked and compare against rock
         switch(computerSelection){
             case 0: return "It's a tie!"
@@ -19,7 +20,7 @@ function playRound(playerSelection, computerSelection){
         }
     }
     //if player chooses paper
-    else if (playerSelection === 1){
+    else if (playerSelection === "paper"){
         //check what computer picked and compare against paper
         switch(computerSelection){
             case 0: return "You Win! Paper beats Rock"
@@ -41,7 +42,27 @@ function playRound(playerSelection, computerSelection){
         }
     }
 }
-// this function plays a game with 5 rounds
+// buttons is a node list. It looks and acts much like an array.
+const buttons = document.querySelectorAll('button');
+let playerChoice = "";
+// we use the .forEach method to iterate through each button
+buttons.forEach((button) => {
+
+  // and for each one we add a 'click' listener
+  button.addEventListener('click', () => {
+    console.log(playRound(button.className));
+  });
+});
+
+
+
+
+
+
+
+
+
+/* this function plays a game with 5 rounds
 function game(){
     // define the players selection
     playerSelection = null;
@@ -90,6 +111,6 @@ function game(){
         console.log("It's a tie");
         alert("It's a tie");
     }
-}
+}*/
 
-game();
+//game();
