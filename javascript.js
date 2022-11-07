@@ -5,9 +5,9 @@ function getComputerChoice(){
     //Multiply by 3 to get a number between 0 and 2 when rounding down.
     return Math.floor(Math.random() * 3);
 }
+
 // this function returns a string telling who wins
-function playRound(playerSelection){
-    let computerSelection = getComputerChoice;
+function playRound(playerSelection, computerSelection){
     //if player chooses rock
     if (playerSelection === "rock"){
         //check what computer picked and compare against rock
@@ -50,7 +50,8 @@ buttons.forEach((button) => {
 
   // and for each one we add a 'click' listener
   button.addEventListener('click', () => {
-    console.log(playRound(button.className));
+    let computerSelection = getComputerChoice();
+    console.log(playRound(button.className, computerSelection));
   });
 });
 
