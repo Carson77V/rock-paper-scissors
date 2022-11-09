@@ -112,6 +112,7 @@ function disableButtons(){
     buttons.forEach(btn => {
         btn.disabled = true;
     });
+
 }
 
 // will create a header the ends the game
