@@ -42,6 +42,7 @@ function playRound(playerSelection, computerSelection){
         }
     }
 }
+
 // buttons is a node list. It looks and acts much like an array.
 const buttons = document.querySelectorAll('button');
 let playerChoice = "";
@@ -54,10 +55,12 @@ buttons.forEach((button) => {
     let result = playRound(button.className, computerSelection);
     displayResult(result);
     countScore(result);
-    if (winner){
-
+    if (winner() === 'P'){
+        endGame("You Win!");
     }
-
+    if (winner() === 'C'){
+        endGame("Computer Wins!");
+    }
 
     console.log(result);
   });
@@ -72,6 +75,7 @@ function displayResult(resultString){
 }
 
 let playerPoints = 0, computerPoints = 0;
+
 // function modifies score for computer and player
 function countScore(result){
     //check results and gives points to computer or player
@@ -91,68 +95,35 @@ function countScore(result){
     }
 }
 
+// checks if a player reaches 5 points
 function winner(){
+    // once a player reaches 5 points disable the button
     if (playerPoints === 5){
-        return "You Win!";
+        return "P";
     }
     if (computerPoints === 5){
-        return "The Computer Wins!";
+        return "C";
     }
 }
 
+// function is called when the game ends 
+function disableButtons(){
+    // disables every button
+    buttons.forEach(btn => {
+        btn.disabled = true;
+    });
+}
 
+// will create a header the ends the game
+function endGame(text){
+    disableButtons();
+    const body = document.querySelector('body');
 
+    const gameEnd = document.createElement('h3');
 
+    gameEnd.textContent = text;
+    gameEnd.classList.add('gameEnd');
+    gameEnd.style.color = 'red';
 
-/* this function plays a game with 5 rounds
-function game(){
-    // define the players selection
-    playerSelection = null;
-    playerPoints = 0;
-    computerPoints = 0;
-    // for loop to play the game 5 times
-    for (let i = 0; i < 5; i++){
-        // a while loop to make sure the player selects rock paper or scissors
-        while (playerSelection != "rock" && playerSelection != "paper" && playerSelection 
-            != "scissors"){
-                // makes the player selection lower case to compare in while loop
-                playerSelection = prompt("rock, paper or scissors?").toLowerCase();
-            }
-        // convert playerSelection to a number to use in playRound function
-        if (playerSelection === "rock"){
-            playerSelection = 0;
-        }
-        else if (playerSelection === "paper"){
-            playerSelection = 1;
-        }
-        else {
-            playerSelection = 2;
-        }
-        // the result will be checked for the winner to add points
-        let result = playRound(playerSelection, getComputerChoice());
-        console.log(result);
-        //check results and gives points to computer or player
-        //charAt(4) is the character where it begins to say "Win" or "Lose"
-        if (result.charAt(4) == "W"){
-            playerPoints++;
-        }
-        else if (result.charAt(4) == "L"){
-            computerPoints++;
-        }
-    }
-    // check the points and print the winner to the console
-    if (playerPoints > computerPoints){
-        console.log("You Win!");
-        alert("You Win!");
-    }
-    else if (playerPoints < computerPoints){
-        console.log("The computer Wins");
-        alert("The computer Wins");
-    }
-    else {
-        console.log("It's a tie");
-        alert("It's a tie");
-    }
-}*/
-
-//game();
+    body.appendChild(gameEnd);
+}
