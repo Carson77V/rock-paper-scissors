@@ -29,3 +29,21 @@ button:hover{
     background-color: #eeeeee;
     box-shadow: 0 0 2px 2px #eeeeee;
 }
+
+.scores{
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+}
+
+.playerScore, .computerScore{
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    margin: 0 1em;
+}
+
+h3{
+    margin-top: 1em;
+    margin-bottom: 0;
+}
